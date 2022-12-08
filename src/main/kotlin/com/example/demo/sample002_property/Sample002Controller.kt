@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 
 /*
 application.yml
-application-xx.yml
+application-xxx.yml
 
 change active value in application.yml
 spring:

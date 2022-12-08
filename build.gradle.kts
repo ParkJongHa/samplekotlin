@@ -27,6 +27,7 @@ dependencies {
     /* sample005_quartz */ implementation("org.springframework.boot:spring-boot-starter-quartz")
     /* sample005_quartz */ implementation("org.quartz-scheduler:quartz:2.3.2")
 
+    /* sample006_rabbitmq */ implementation("org.springframework.boot:spring-boot-starter-amqp")
 }
 
 tasks.withType<KotlinCompile> {

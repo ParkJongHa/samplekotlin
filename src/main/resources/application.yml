@@ -5,3 +5,10 @@ spring:
   cache:
     jcache:
       config: classpath:ehcache.xml
+
+#sample006_rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
