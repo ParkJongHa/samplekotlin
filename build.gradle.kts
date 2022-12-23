@@ -33,7 +33,7 @@ dependencies {
 
     /* sample008_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-
+    /* sample010_gson */ implementation("com.google.code.gson:gson:2.10")
 }
 
 tasks.withType<KotlinCompile> {

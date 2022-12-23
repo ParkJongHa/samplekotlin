@@ -16,6 +16,8 @@ class Sample009Aop {
 
     @Around("controllerPointcut()")
     fun log(proceedingJoinPoint: ProceedingJoinPoint): Any? {
+        println("Req > ${proceedingJoinPoint.target.javaClass.canonicalName.replaceAfterLast("@", "")}" +
+                ".${proceedingJoinPoint.signature.name}")
 
         proceedingJoinPoint.args.forEach {when (it) {
             is WebRequest -> {
