@@ -4,16 +4,17 @@ import jakarta.persistence.*
 
 
 @Entity
-class User {
+@Table(name = "tb_user") // basically `user` used
+class User (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
+    var id: Long? = null,
 
-    @Column(nullable = false)
-    val name: String? = null
+    @Column
+    var name: String? = null,
 
-    @Column(nullable = false)
-    val age = 0
+    @Column
+    var age: Int? = 0
 
-}
+)

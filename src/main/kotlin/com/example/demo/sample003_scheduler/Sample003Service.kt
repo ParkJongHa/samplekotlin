@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 class Sample003Service {
 
     fun task() {
-        println("Sample003Service task exe time : ${LocalDateTime.now()}")
+        if (false) println("Sample003Service task exe time : ${LocalDateTime.now()}")
     }
 
 }

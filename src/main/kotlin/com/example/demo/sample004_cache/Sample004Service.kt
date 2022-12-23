@@ -21,7 +21,7 @@ class Sample004Service {
     @CacheEvict(value=["sample004_cache"], allEntries = true)
     @Scheduled(fixedRate = 10, timeUnit = TimeUnit.SECONDS)
     fun evictCacheValue() {
-        println("println evictCacheValue")
+        if (false) println("println evictCacheValue")
     }
 
 }

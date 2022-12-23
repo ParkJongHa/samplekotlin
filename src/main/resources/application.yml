@@ -24,3 +24,19 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+#sample008_jpa
+  jpa:
+    hibernate:
+      ddl-auto: validate  # option type: create, create-drop, update, validate, none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect # Query engine setting
+        format_sql: true
+        use_sql_comments: true
+    show-sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: trace

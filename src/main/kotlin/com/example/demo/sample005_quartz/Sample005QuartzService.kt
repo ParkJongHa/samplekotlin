@@ -7,6 +7,6 @@ import java.time.LocalDateTime
 class Sample005QuartzService {
 
     fun execute() {
-        println("Sample005QuartzService execute time : ${LocalDateTime.now()}")
+        if (false) println("Sample005QuartzService execute time : ${LocalDateTime.now()}")
     }
 }
