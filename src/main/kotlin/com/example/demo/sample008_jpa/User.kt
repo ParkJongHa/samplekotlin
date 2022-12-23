@@ -2,7 +2,6 @@ package com.example.demo.sample008_jpa
 
 import jakarta.persistence.*
 
-
 @Entity
 @Table(name = "tb_user") // basically `user` used
 class User (
