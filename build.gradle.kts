@@ -28,6 +28,11 @@ dependencies {
     /* sample005_quartz */ implementation("org.quartz-scheduler:quartz:2.3.2")
 
     /* sample006_rabbitmq */ implementation("org.springframework.boot:spring-boot-starter-amqp")
+
+    /* sample007_h2 */ implementation("com.h2database:h2")
+
+    /* sample008_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
 }
 
 tasks.withType<KotlinCompile> {
