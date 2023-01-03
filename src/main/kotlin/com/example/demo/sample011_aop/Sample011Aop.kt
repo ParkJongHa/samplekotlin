@@ -1,5 +1,6 @@
-package com.example.demo.sample009_aop
+package com.example.demo.sample011_aop
 
+import com.google.gson.Gson
 import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
@@ -9,7 +10,7 @@ import org.springframework.web.context.request.WebRequest
 
 @Component
 @Aspect
-class Sample009Aop {
+class Sample011Aop {
 
     @Pointcut("execution(* com..*Controller.*(..) )")
     fun controllerPointcut() {}
@@ -18,6 +19,8 @@ class Sample009Aop {
     fun log(proceedingJoinPoint: ProceedingJoinPoint): Any? {
         println("Req > ${proceedingJoinPoint.target.javaClass.canonicalName.replaceAfterLast("@", "")}" +
                 ".${proceedingJoinPoint.signature.name}")
+
+        val startTime = System.currentTimeMillis()
 
         proceedingJoinPoint.args.forEach {when (it) {
             is WebRequest -> {
@@ -31,7 +34,20 @@ class Sample009Aop {
             }
         }}
 
-        return proceedingJoinPoint.proceed()
+        var returnVal: Any? = null
+
+        try {
+            returnVal = proceedingJoinPoint.proceed()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            println("Res > ${proceedingJoinPoint.target.javaClass.canonicalName.replaceAfterLast("@", "")}" +
+                    ".${proceedingJoinPoint.signature.name}" +
+                    " (${System.currentTimeMillis() - startTime}sec)" +
+                    " ${Gson().toJson(returnVal)}")
+        }
+
+        return returnVal
     }
 
 }
