@@ -1,4 +1,4 @@
-package sample02algorithm.demo001_combination
+package sample02algorithm.demo002_combination
 
 import java.util.*
 
@@ -7,7 +7,7 @@ class CombinationGenerator<T>(
     private val extractCount: Int // r of (nCr)
 ) {
 
-    private val resultListList: List<List<T>>
+    private var resultListList: List<List<T>>
     private val resultArr: Array<Any>
     private val visitArr: Array<Boolean>
 
@@ -15,17 +15,17 @@ class CombinationGenerator<T>(
         this.resultListList = mutableListOf()
         this.resultArr = Array(extractCount) {}
         this.visitArr = Array(itemList.size) { false }
+
+        getCombinationResult(0,0)
     }
 
     @Suppress("UNCHECKED_CAST")
     private fun getCombinationResult(idx: Int, cnt: Int) {
         if (cnt == extractCount) {
-            println("aaa")
             val tempResult = mutableListOf<T>()
             tempResult.addAll(resultArr.map {it as T})
-            resultListList.plus(tempResult)
+            resultListList = resultListList.plusElement(tempResult)
         } else {
-            println("bbb")
             for (i in idx until itemList.size) {
                 if (visitArr[i]) continue
 
@@ -38,8 +38,6 @@ class CombinationGenerator<T>(
     }
 
     fun get(): List<List<T>> {
-        getCombinationResult(0,0)
-        println(resultListList)
         return resultListList
     }
 }
