@@ -41,6 +41,7 @@ dependencies {
     /* demo010_mapstruct */ implementation("org.mapstruct:mapstruct:1.5.3.Final")
     /* demo010_mapstruct */ annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
 
+    /* multipartfile */ implementation("commons-fileupload:commons-fileupload:1.4")
 }
 
 tasks.withType<KotlinCompile> {
