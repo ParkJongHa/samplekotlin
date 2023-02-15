@@ -1,6 +1,5 @@
 package data
 
-import data.GenderEnum
 import java.time.LocalDateTime
 
 data class MemberVo(

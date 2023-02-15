@@ -1,4 +1,4 @@
-package sample04_spring.demo017_cache
+package sample04_spring.demo018_cache
 
 import org.springframework.cache.CacheManager
 import org.springframework.cache.annotation.EnableCaching
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @EnableCaching
-class Demo017SpringCachingConfig {
+class Demo018SpringCachingConfig {
 
     @Bean
     fun cacheManager(): CacheManager {

@@ -1,4 +1,4 @@
-package sample04_spring.demo018_rabbitmq
+package sample04_spring.demo019_rabbitmq
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController
 
  */
 @RestController
-class Demo018PublisherController(
+class Demo019PublisherController(
     val rabbitTemplate: RabbitTemplate
 ) {
 
@@ -29,8 +29,8 @@ class Demo018PublisherController(
         @RequestParam("msg") msg: String
     ): String {
         rabbitTemplate.convertAndSend(
-            Demo018PublisherConfig.exchangeName,
-            Demo018PublisherConfig.routingKey,
+            Demo019PublisherConfig.exchangeName,
+            Demo019PublisherConfig.routingKey,
             msg
         )
         return "sending : $msg"

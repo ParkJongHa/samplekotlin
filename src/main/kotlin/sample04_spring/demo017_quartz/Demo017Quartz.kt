@@ -1,4 +1,4 @@
-package sample04_spring.demo016_quartz
+package sample04_spring.demo017_quartz
 
 import jakarta.annotation.PostConstruct
 import org.quartz.*
@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Component
 
 @Component
-class Demo016Quartz {
+class Demo017Quartz {
 
     @Autowired
     lateinit var applicationContext: ApplicationContext
@@ -29,9 +29,9 @@ class Demo016Quartz {
                     put(ApplicationContext::class.simpleName, applicationContext)
                 }
 
-            val jobDetail = JobBuilder.newJob().ofType(Demo016QuartzJob::class.java)
+            val jobDetail = JobBuilder.newJob().ofType(Demo017QuartzJob::class.java)
                 .setJobData(jobDataMap)
-                .withIdentity(Demo016QuartzJob::class.simpleName+"Identity")
+                .withIdentity(Demo017QuartzJob::class.simpleName+"Identity")
                 .build()
 
             val trigger = TriggerBuilder

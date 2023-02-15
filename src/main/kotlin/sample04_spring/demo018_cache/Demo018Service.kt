@@ -1,4 +1,4 @@
-package sample04_spring.demo017_cache
+package sample04_spring.demo018_cache
 
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
 @Service
-class Demo017Service {
+class Demo018Service {
 
     @Cacheable(value=["demo004_cache"], key = "#cacheKey")
     fun getCacheValue(cacheKey: Int): String {

@@ -33,15 +33,16 @@ dependencies {
     /* demo004_mapstruct */ annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
 
     /* demo008_multipartfile */ implementation("commons-fileupload:commons-fileupload:1.4")
+    /* demo009_multipartfileimageresize */ implementation("org.imgscalr:imgscalr-lib:4.2")
 
-    /* demo015_quartz */ implementation("org.springframework.boot:spring-boot-starter-quartz")
-    /* demo015_quartz */ implementation("org.quartz-scheduler:quartz:2.3.2")
+    /* demo016_quartz */ implementation("org.springframework.boot:spring-boot-starter-quartz")
+    /* demo016_quartz */ implementation("org.quartz-scheduler:quartz:2.3.2")
 
-    /* demo018_rabbitmq */ implementation("org.springframework.boot:spring-boot-starter-amqp")
+    /* demo019_rabbitmq */ implementation("org.springframework.boot:spring-boot-starter-amqp")
 
-    /* demo020_h2 */ implementation("com.h2database:h2")
+    /* demo021_h2 */ implementation("com.h2database:h2")
 
-    /* demo021_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    /* demo022_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 }
 

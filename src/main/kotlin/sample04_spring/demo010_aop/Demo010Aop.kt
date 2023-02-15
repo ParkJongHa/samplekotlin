@@ -1,4 +1,4 @@
-package sample04_spring.demo009_aop
+package sample04_spring.demo010_aop
 
 import com.google.gson.Gson
 import org.aspectj.lang.ProceedingJoinPoint
@@ -10,7 +10,7 @@ import org.springframework.web.context.request.WebRequest
 
 @Component
 @Aspect
-class Demo009Aop {
+class Demo010Aop {
 
     @Pointcut("execution(* com..*Controller.*(..) )")
     fun controllerPointcut() {}

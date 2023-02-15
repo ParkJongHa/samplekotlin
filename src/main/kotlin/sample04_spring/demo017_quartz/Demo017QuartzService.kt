@@ -1,10 +1,10 @@
-package sample04_spring.demo016_quartz
+package sample04_spring.demo017_quartz
 
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class Demo016QuartzService {
+class Demo017QuartzService {
 
     fun execute() {
         if (false) println("Demo015QuartzService execute time : ${LocalDateTime.now()}")

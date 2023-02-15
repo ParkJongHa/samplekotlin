@@ -1,12 +1,12 @@
-package sample04_spring.demo017_cache
+package sample04_spring.demo018_cache
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class Demo017Controller(
-    val demo004Service: Demo017Service
+class Demo018Controller(
+    val demo004Service: Demo018Service
 ) {
 
     /**
