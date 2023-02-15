@@ -16,6 +16,9 @@ object TimeUtil {
         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
         .toFormatter()
 
+    /**
+     * @return 20230215105106
+     */
     fun now(): String {
         return LocalDateTime.now().format(dateTimeFormatterYmdhms)
     }

@@ -1,5 +1,6 @@
 package sample04_spring.demo008_multipart_file
 
+import common.TimeUtil
 import org.apache.commons.io.IOUtils
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -7,9 +8,6 @@ import org.springframework.web.multipart.MultipartFile
 import java.io.File
 import java.io.FileInputStream
 import java.nio.file.Files
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatterBuilder
-import java.time.temporal.ChronoField
 
 @RestController
 class Demo008FileController {
@@ -32,15 +30,7 @@ class Demo008FileController {
 			multipartFile.size: ${multipartFile.size} // 22101
 		""".trimIndent())
 
-		val fileNameForSave = LocalDateTime.now()
-			.format(DateTimeFormatterBuilder()
-				.appendValue(ChronoField.YEAR, 4)
-				.appendValue(ChronoField.MONTH_OF_YEAR, 2)
-				.appendValue(ChronoField.DAY_OF_MONTH, 2)
-				.appendValue(ChronoField.HOUR_OF_DAY, 2)
-				.appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-				.appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-				.toFormatter())
+		val fileNameForSave = TimeUtil.now()
 
 		val file = File("C:\\uploadfilestorage\\${fileNameForSave}") // folder must exist
 
