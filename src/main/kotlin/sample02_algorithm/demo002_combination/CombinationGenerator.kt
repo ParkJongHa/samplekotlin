@@ -1,7 +1,5 @@
 package sample02_algorithm.demo002_combination
 
-import java.util.*
-
 class CombinationGenerator<T>(
     private val itemList: List<T>,
     private val extractCount: Int // r of (nCr)

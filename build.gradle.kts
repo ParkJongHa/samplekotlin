@@ -40,6 +40,8 @@ dependencies {
 
     /* demo019_rabbitmq */ implementation("org.springframework.boot:spring-boot-starter-amqp")
 
+    /* demo020_jsoup */ implementation("org.jsoup:jsoup:1.15.3") // jsoup 크롤링
+
     /* demo021_h2 */ implementation("com.h2database:h2")
 
     /* demo022_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
