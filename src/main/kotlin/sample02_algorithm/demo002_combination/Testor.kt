@@ -1,6 +1,6 @@
 package sample02_algorithm.demo002_combination
 
-fun main() {
+fun mainAA() {
     val tempList = listOf("a", "b", "c", "d")
     val extractCount = 2
 
