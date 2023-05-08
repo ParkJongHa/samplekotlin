@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class Demo018Controller(
-    val demo004Service: Demo018Service
+    val demo018Service: Demo018Service
 ) {
 
     /**
      * http://localhost:8080/api/demo017?cacheKey=1
      */
-    @GetMapping("/api/demo017")
+    @GetMapping("/api/demo018")
     fun getCacheValue(@RequestParam("cacheKey") cacheKey: Int): String {
-        return demo004Service.getCacheValue(cacheKey)
+        return demo018Service.getCacheValue(cacheKey)
     }
 
 }

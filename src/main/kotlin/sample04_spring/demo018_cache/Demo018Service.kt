@@ -10,15 +10,15 @@ import java.util.concurrent.TimeUnit
 @Service
 class Demo018Service {
 
-    @Cacheable(value=["demo004_cache"], key = "#cacheKey")
+    @Cacheable(value=["demo018_cache"], key = "#cacheKey")
     fun getCacheValue(cacheKey: Int): String {
-        return "Demo004Service - Server return time : ${LocalDateTime.now()}, cacheKey:$cacheKey"
+        return "Demo018Service - Server return time : ${LocalDateTime.now()}, cacheKey:$cacheKey"
     }
 
     /**
      * Don't forget to add @EnableScheduling in @SpringBootApplication class
      */
-    @CacheEvict(value=["demo004_cache"], allEntries = true)
+    @CacheEvict(value=["demo018_cache"], allEntries = true)
     @Scheduled(fixedRate = 10, timeUnit = TimeUnit.SECONDS)
     fun evictCacheValue() {
         if (false) println("println evictCacheValue")

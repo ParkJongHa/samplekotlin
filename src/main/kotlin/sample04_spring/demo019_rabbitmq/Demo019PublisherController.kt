@@ -22,9 +22,9 @@ class Demo019PublisherController(
 ) {
 
     /**
-     * http://localhost:8080/api/demo018?msg=hi
+     * http://localhost:8080/api/demo019?msg=hi
      */
-    @GetMapping("/api/demo018")
+    @GetMapping("/api/demo019")
     fun getCacheValue(
         @RequestParam("msg") msg: String
     ): String {
