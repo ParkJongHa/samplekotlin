@@ -24,7 +24,7 @@ class Demo019PublisherController(
     /**
      * http://localhost:8080/api/demo019?msg=hi
      */
-    @GetMapping("/api/demo019")
+    @GetMapping("/api/rabbitmq")
     fun getCacheValue(
         @RequestParam("msg") msg: String
     ): String {
