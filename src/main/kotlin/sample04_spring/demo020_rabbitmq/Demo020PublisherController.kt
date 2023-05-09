@@ -1,4 +1,4 @@
-package sample04_spring.demo019_rabbitmq
+package sample04_spring.demo020_rabbitmq
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.RestController
 
  */
 @RestController
-class Demo019PublisherController(
+class Demo020PublisherController(
     val rabbitTemplate: RabbitTemplate
 ) {
 
     /**
-     * http://localhost:8080/api/demo019?msg=hi
+     * http://localhost:8080/api/demo020?msg=hi
      */
-    @GetMapping("/api/rabbitmq")
+    @GetMapping("/api/demo020")
     fun getCacheValue(
         @RequestParam("msg") msg: String
     ): String {
         rabbitTemplate.convertAndSend(
-            Demo019PublisherConfig.exchangeName,
-            Demo019PublisherConfig.routingKey,
+            Demo020PublisherConfig.exchangeName,
+            Demo020PublisherConfig.routingKey,
             msg
         )
         return "sending : $msg"

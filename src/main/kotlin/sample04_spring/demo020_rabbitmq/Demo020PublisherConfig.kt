@@ -1,4 +1,4 @@
-package sample04_spring.demo019_rabbitmq
+package sample04_spring.demo020_rabbitmq
 
 import org.springframework.amqp.core.Binding
 import org.springframework.amqp.core.BindingBuilder
@@ -10,7 +10,7 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter
 import org.springframework.amqp.support.converter.MessageConverter
 import org.springframework.context.annotation.Bean
 
-class Demo019PublisherConfig {
+class Demo020PublisherConfig {
 
     companion object {
         const val exchangeName: String = "demo.exchange"

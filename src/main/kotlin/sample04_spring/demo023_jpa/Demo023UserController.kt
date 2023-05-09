@@ -1,17 +1,17 @@
-package sample04_spring.demo022_jpa
+package sample04_spring.demo023_jpa
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class Demo022UserController(
-    val demo008UserService: Demo022UserService
+class Demo023UserController(
+    val demo023UserService: Demo023UserService
 ) {
 
     @GetMapping("/api/demo021/user/{id}")
     fun getUser(@PathVariable id: Long): User? {
-        return demo008UserService.findById(id)
+        return demo023UserService.findById(id)
     }
 
 }

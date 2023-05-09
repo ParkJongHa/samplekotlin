@@ -1,4 +1,4 @@
-package sample04_spring.demo022_jpa
+package sample04_spring.demo023_jpa
 
 import jakarta.persistence.*
 

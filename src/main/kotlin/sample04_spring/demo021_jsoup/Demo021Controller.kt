@@ -1,11 +1,10 @@
-package sample04_spring.demo020_jsoup
+package sample04_spring.demo021_jsoup
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDateTime
 
 @RestController
-class Demo020Controller {
+class Demo021Controller {
 
     @GetMapping("/api/demo020")
     fun getOgTag(): String {

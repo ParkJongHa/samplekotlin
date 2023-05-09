@@ -1,4 +1,4 @@
-package sample04_spring.demo023_application_context_aware
+package sample04_spring.demo025_application_context_aware
 
 import org.springframework.context.ApplicationContext
 import org.springframework.context.ApplicationContextAware
