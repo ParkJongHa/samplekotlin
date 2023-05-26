@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class Demo021Controller {
 
-    @GetMapping("/api/demo020")
+    @GetMapping("/api/demo021")
     fun getOgTag(): String {
         val url = "http://www.molit.go.kr/portal.do"
         return OgTag().getTitle(url)?:"null"

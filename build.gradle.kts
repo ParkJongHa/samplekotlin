@@ -32,7 +32,10 @@ dependencies {
     /* demo004_mapstruct */ implementation("org.mapstruct:mapstruct:1.5.3.Final")
     /* demo004_mapstruct */ annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
 
-    /* demo008_multipartfile */ implementation("commons-fileupload:commons-fileupload:1.4")
+    /* demo007_restful */ implementation("org.springframework.boot:spring-boot-starter-validation:2.7.1")
+
+
+    /* demo008_multipartfile */ implementation("commons-fileupload:commons-fileupload:1.5")
     /* demo009_multipartfileimageresize */ implementation("org.imgscalr:imgscalr-lib:4.2")
 
     /* demo016_quartz */ implementation("org.springframework.boot:spring-boot-starter-quartz")
@@ -45,6 +48,15 @@ dependencies {
     /* demo021_h2 */ implementation("com.h2database:h2")
 
     /* demo022_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+//    /* demo026_slf4j */ implementation("org.springframework.boot:spring-boot-starter-log4j2")
+//    /* demo026_slf4j */ implementation("org.project-lombok:lombok:1.18.22")
+//    compileOnly("org.project-lombok:lombok")
+//    annotationProcessor("org.project-lombok:lombok")
+//    implementation ('org.springframework.boot:spring-boot-starter-web') {
+//        exclude module: 'spring-boot-starter-tomcat'
+//    }
+
 
 }
 

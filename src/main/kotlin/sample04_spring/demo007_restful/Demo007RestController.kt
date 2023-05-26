@@ -1,6 +1,9 @@
 package sample04_spring.demo007_restful
 
 import data.UserDto
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 /*
@@ -23,18 +26,22 @@ class Demo007RestController {
     }
 
     /*
-    http://localhost:8080/api/user?page=1
+    http://localhost:8080/api/user?pageNo=1&pageSize=5
      */
     @GetMapping("/api/user")
-    fun getUserList(@RequestParam(name = "page") page: Int): List<UserDto> {
-        println("Demo007RestController getUserList $page")
-        return listOf(
-            UserDto(1, "Joe1", 21),
-            UserDto(2, "Joe2", 22),
-            UserDto(3, "Joe3", 23),
-            UserDto(4, "Joe4", 24),
-            UserDto(5, "Joe5", 25),
-        )
+    fun getUserList(
+        @RequestParam(name = "pageNo") pageNo: Int,
+        @RequestParam(name = "pageSize") pageSize: Int // validation from jakarta pkg
+    ): List<UserDto> {
+        println("Demo007RestController getUserList pageNo:$pageNo, pageSize:$pageSize")
+
+        val userList = mutableListOf<UserDto>()
+
+        for (i in (pageNo - 1)*pageSize until pageNo*pageSize) {
+            userList.add(UserDto(i.toLong(), "Joe$i", i))
+        }
+
+        return userList
     }
 
     /*
