@@ -1,11 +1,14 @@
 package sample01_kotlin.demo007_time
 
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.time.format.TextStyle
 import java.util.*
 
-fun main() {
+fun main1() {
     val year = 2000
     val month = 9
     val day = 17
@@ -93,3 +96,19 @@ fun main() {
     }
 }
 
+fun main() {
+    val zoneId = ZoneId.systemDefault()
+
+    Locale.getAvailableLocales().forEach {
+        println("$zoneId ${"%-${20}s".format(it.toString())} ${zoneId.getDisplayName(TextStyle.FULL, it)}")
+    }
+}
+/*
+Asia/Seoul my                   ကိုရီးယား အချိန်
+Asia/Seoul ka                   კორეის დრო
+Asia/Seoul ff_GH_#Adlm          𞤑𞤭𞤶𞤮𞥅𞤪𞤫 𞤑𞤮𞥅𞤪𞤫𞤴𞤢𞥄
+Asia/Seoul ko_KR_#Kore          대한민국 시간
+Asia/Seoul fr_MF                heure de la Corée
+Asia/Seoul ms_ID                Waktu Korea
+Asia/Seoul shi                  Korea Time
+ */
