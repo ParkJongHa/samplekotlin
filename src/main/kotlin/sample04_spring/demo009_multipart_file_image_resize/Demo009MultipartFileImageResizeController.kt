@@ -41,7 +41,7 @@ class Demo009MultipartFileImageResizeController(
 		""".trimIndent())
 
 		val extension = (multipartFile.originalFilename?:"").substringAfterLast(".", "")
-		val newFileName = "C:\\uploadfilestorage\\${TimeUtil.now()}"
+		val newFileName = "C:\\uploadfilestorage\\${TimeUtil.getNow()}"
 		val file = File(newFileName) // folder must exist
 
 		Files.copy(multipartFile.inputStream, file.toPath())// save original file

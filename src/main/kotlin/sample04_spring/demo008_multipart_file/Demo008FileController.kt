@@ -30,7 +30,7 @@ class Demo008FileController {
 			multipartFile.size: ${multipartFile.size} // 22101
 		""".trimIndent())
 
-		val fileNameForSave = TimeUtil.now()
+		val fileNameForSave = TimeUtil.getNow()
 
 		val file = File("C:\\uploadfilestorage\\${fileNameForSave}") // folder must exist
 

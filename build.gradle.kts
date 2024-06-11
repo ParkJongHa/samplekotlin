@@ -4,7 +4,7 @@ plugins {
     /* default */ id("org.springframework.boot") version "3.0.1"
     /* default */ id("io.spring.dependency-management") version "1.1.0"
     /* default */ id("org.graalvm.buildtools.native") version "0.9.18"
-    /* default */ kotlin("jvm") version "1.7.21"
+    /* default */ kotlin("jvm") version "1.8.20"
     /* default */ kotlin("plugin.spring") version "1.7.21"
     /* demo004_mapstruct */ kotlin("kapt") version "1.7.10"
 }
@@ -61,6 +61,9 @@ dependencies {
 
 
     /* kotlin coroutines */ implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+
+    /* demo004 og */implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
 }
 
