@@ -13,12 +13,15 @@ object AnimationStyleStringMaker {
 
     fun getStringList(
         originText: String,
-        animationDuration: Long = 3000,
-        animationUnitTime: Long = 1000,
+        animationDuration: Long = 1000,
+        animationUnitTime: Long = 50,
+        isRemoveDupl: Boolean = true,
     ): List<String> {
         val onlyCharsCount = getCharsCount( originText )
-        val changeCount = (animationDuration / animationUnitTime).toInt().let {if (it < 1) 1 else it} // 100 백번의 변경을 한다는 뜻
-        val unitCount = (onlyCharsCount / changeCount).let {if (it < 1) 1 else it}
+        val changeCount = ((animationDuration / animationUnitTime).toInt()) // 100 백번의 변경을 한다는 뜻
+            .let {if(it < 1) 1 else it}
+        val unitCount = (onlyCharsCount / changeCount)
+            .let {if (it < 1) 1 else it}
 
         var tString: String
         var tOnlyCharsCount: Int
@@ -27,12 +30,21 @@ object AnimationStyleStringMaker {
         var tLastEndIndex: Int
         val animationStyleStringList = mutableListOf<String>()
 
-        for(i: Int in 1..originText.length step(unitCount)) {
+        for(i: Int in unitCount..originText.length step(unitCount)) {
             tString = originText.substring(0 until i)
             tOnlyCharsCount = getCharsCount(tString)
 
             if (onlyCharsCount < tOnlyCharsCount) {
                 continue
+            }
+
+            if (tString.contains("<a style=")) { // 첫 시작이 이런 식으로 시작   // <a style=color:#242995;font-weight:bold; >선물
+                if ( ! tString.contains(">") ) {
+                    continue
+                }
+                if (tOnlyCharsCount == tString.length) {
+                    continue
+                }
             }
 
             tLastStartIndex = tString.lastIndexOf("<")
@@ -48,15 +60,10 @@ object AnimationStyleStringMaker {
                     && 0 < tLastStartEndIndex
                     && tLastEndIndex < 0
                 ) { // tag 안닫힘
-                    if (tString.endsWith("<")) {
-                        tString += "/a>"
-                    } else if (tString.endsWith("</")) {
-                        tString += "a>"
-                    } else if (tString.endsWith("</a")) {
-                        tString += ">"
-                    } else {
-                        tString += "</a>"
-                    }
+                    tString += if (tString.endsWith("<")) "/a>"
+                    else if (tString.endsWith("</")) "a>"
+                    else if (tString.endsWith("</a")) ">"
+                    else "</a>"
                     animationStyleStringList.add(tString)
                 } else {
                     if (0 < tLastStartIndex) {
@@ -68,6 +75,23 @@ object AnimationStyleStringMaker {
         }
 
         animationStyleStringList.add(originText)
-        return animationStyleStringList
+
+        return if (isRemoveDupl) {
+            val removedDuplStringList = mutableListOf<String>()
+            animationStyleStringList.forEach{ aString ->
+                if (removedDuplStringList.isEmpty()) {
+                    removedDuplStringList.add(aString)
+                } else {
+                    if (removedDuplStringList.last() == aString) {
+                        // 중복
+                    } else {
+                        removedDuplStringList.add(aString)
+                    }
+                }
+            }
+            removedDuplStringList
+        } else {
+            animationStyleStringList
+        }
     }
 }
