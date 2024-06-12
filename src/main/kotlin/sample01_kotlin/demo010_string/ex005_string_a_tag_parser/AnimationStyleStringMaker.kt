@@ -1,4 +1,4 @@
-package sample01_kotlin.demo010_temp_a_tag_parser
+package sample01_kotlin.demo010_string.ex005_string_a_tag_parser
 
 import java.util.regex.Pattern
 

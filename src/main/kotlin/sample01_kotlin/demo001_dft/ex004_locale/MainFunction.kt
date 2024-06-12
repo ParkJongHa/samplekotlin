@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex007_locale
+package sample01_kotlin.demo001_dft.ex004_locale
 
 import java.util.*
 

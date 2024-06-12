@@ -1,11 +1,8 @@
-package sample01_kotlin.demo001_dft.ex011_date
+package sample01_kotlin.demo007_time.ex003_date
 
 import common.TimeUtil
-import java.text.SimpleDateFormat
 import java.time.*
 import java.time.format.DateTimeFormatter
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 fun main1() {
 //    val date: Date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")

@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex005_string_special_char
+package sample01_kotlin.demo010_string.ex002_string_special_char
 
 fun main1() {
     val str = "abc!@#123일이삼一二三ａｂｃ\uD83D\uDE33しごと"

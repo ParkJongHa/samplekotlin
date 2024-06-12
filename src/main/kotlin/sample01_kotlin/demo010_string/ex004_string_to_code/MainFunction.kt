@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex009_string_to_code
+package sample01_kotlin.demo010_string.ex004_string_to_code
 
 import data.Depth1Vo
 import data.Depth2Vo

@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex012_list_chunk
+package sample01_kotlin.demo001_dft.ex007_list_chunk
 
 fun main() {
     val sampleList = listOf(

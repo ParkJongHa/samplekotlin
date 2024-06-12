@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex010_timeunit
+package sample01_kotlin.demo007_time.ex002_timeunit
 
 import java.util.concurrent.TimeUnit
 

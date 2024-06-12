@@ -1,6 +1,6 @@
-package sample01_kotlin.demo001_dft.ex004_string_length
+package sample01_kotlin.demo010_string.ex001_string_length
 
-fun main1() {
+fun main() {
     var str: String = "abc"
     println( "$str length = ${str.length}" )
 
@@ -11,6 +11,12 @@ fun main1() {
     println( "$str length = ${str.length}" )
 
     str = "\uD84E\uDD9D"
+    println( "$str length = ${str.length}" )
+
+    str = "✌(‘ω’)✌".substring(0, 1)
+    println( "$str length = ${str.length}" )
+
+    str = "嬉".substring(0, 1)
     println( "$str length = ${str.length}" )
 
     str = "\uD84E\uDD9D".substring(0, 1)

@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex006_string_substring
+package sample01_kotlin.demo010_string.ex003_string_substring
 
 import kotlin.random.Random
 

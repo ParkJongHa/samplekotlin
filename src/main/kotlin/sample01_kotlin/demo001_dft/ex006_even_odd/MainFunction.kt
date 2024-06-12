@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex008_even_odd
+package sample01_kotlin.demo001_dft.ex006_even_odd
 
 fun main1() {
     val nTime = 100_000_000

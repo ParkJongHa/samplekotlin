@@ -1,4 +1,4 @@
-package sample01_kotlin.demo001_dft.ex007_stream_sum
+package sample01_kotlin.demo001_dft.ex005_stream_sum
 
 import common.TempData
 
