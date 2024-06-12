@@ -32,19 +32,30 @@ object AnimationStyleStringMaker {
 
         for(i: Int in unitCount..originText.length step(unitCount)) {
             tString = originText.substring(0 until i)
+
+            if (tString == "<"
+                || tString == "<a"
+                || tString == "<a "
+                || tString == "<a s"
+                || tString == "<a st"
+                || tString == "<a sty"
+                || tString == "<a styl"
+                || tString == "<a style"
+                || tString == "<a style="
+            ) {
+                continue
+            }
+
             tOnlyCharsCount = getCharsCount(tString)
 
             if (onlyCharsCount < tOnlyCharsCount) {
                 continue
             }
-
-            if (tString.contains("<a style=")) { // 첫 시작이 이런 식으로 시작   // <a style=color:#242995;font-weight:bold; >선물
-                if ( ! tString.contains(">") ) {
-                    continue
-                }
-                if (tOnlyCharsCount == tString.length) {
-                    continue
-                }
+            if (tString.contains("<a style=") && !tString.contains(">")) {
+                continue
+            }
+            if (tString.contains("<a style=") && tOnlyCharsCount == tString.length) {
+                continue
             }
 
             tLastStartIndex = tString.lastIndexOf("<")
