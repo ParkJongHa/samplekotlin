@@ -13,14 +13,12 @@ object AnimationStyleStringMaker {
 
     fun getStringList(
         originText: String,
-        animationDuration: Int = 3000,
-        animationUnitTime: Int = 1000,
+        animationDuration: Long = 3000,
+        animationUnitTime: Long = 1000,
     ): List<String> {
         val onlyCharsCount = getCharsCount( originText )
-        val changeCount = animationDuration / animationUnitTime // 100 백번의 변경을 한다는 뜻
-        val unitCount = (onlyCharsCount / changeCount).let {
-            if (it < 1) 1 else it
-        }
+        val changeCount = (animationDuration / animationUnitTime).toInt().let {if (it < 1) 1 else it} // 100 백번의 변경을 한다는 뜻
+        val unitCount = (onlyCharsCount / changeCount).let {if (it < 1) 1 else it}
 
         var tString: String
         var tOnlyCharsCount: Int
