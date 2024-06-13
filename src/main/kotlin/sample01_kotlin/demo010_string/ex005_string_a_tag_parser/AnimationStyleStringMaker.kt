@@ -34,20 +34,23 @@ object AnimationStyleStringMaker {
             tString = originText.substring(0 until i)
 
             if (tString == "<"
-                || tString == "<a"
-                || tString == "<a "
-                || tString == "<a s"
-                || tString == "<a st"
-                || tString == "<a sty"
-                || tString == "<a styl"
-                || tString == "<a style"
-                || tString == "<a style="
+            || tString == "<a"
+            || tString == "<a "
+            || tString == "<a s"
+            || tString == "<a st"
+            || tString == "<a sty"
+            || tString == "<a styl"
+            || tString == "<a style"
+            || tString == "<a style="
             ) {
                 continue
             }
 
             tOnlyCharsCount = getCharsCount(tString)
 
+            if (0 == tOnlyCharsCount) {
+                continue
+            }
             if (onlyCharsCount < tOnlyCharsCount) {
                 continue
             }
@@ -63,23 +66,45 @@ object AnimationStyleStringMaker {
             tLastEndIndex = tString.lastIndexOf("</a>")
 
             if (tLastStartIndex < 0 && tLastEndIndex < 0) {
+                println("1) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
                 animationStyleStringList.add(tString)
             } else if (0 < tLastEndIndex && tLastStartIndex == tLastEndIndex) {
+                println("2) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
                 animationStyleStringList.add(tString)
             } else {
                 if (0 < tLastStartIndex
-                    && 0 < tLastStartEndIndex
-                    && tLastEndIndex < 0
+                 && 0 < tLastStartEndIndex
                 ) { // tag 안닫힘
-                    tString += if (tString.endsWith("<")) "/a>"
-                    else if (tString.endsWith("</")) "a>"
-                    else if (tString.endsWith("</a")) ">"
-                    else "</a>"
+                    println("3) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex" +
+                            " before\n$tString\n\n")
+                    tString +=
+                        if (tLastEndIndex < tLastStartEndIndex) {
+                            if (tString.endsWith("<")) "/a>"
+                            else if (tString.endsWith("</")) "a>"
+                            else if (tString.endsWith("</a")) ">"
+                            else "</a>"
+                        } else {// <a style=color:#2 // 이렇게 끝날수 있다.
+                            tString.substring(0, tLastStartIndex)// + "</a>"
+                        }
+                    println("3) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex" +
+                            " after\n$tString\n\n")
                     animationStyleStringList.add(tString)
                 } else {
                     if (0 < tLastStartIndex) {
                         tString = tString.substring(0, tLastStartIndex)
                     }
+                    if (0 <= tLastStartIndex
+                    && 0 < tLastStartEndIndex
+//                    && tLastStartIndex < tLastStartEndIndex
+                    && 0 > tLastEndIndex
+                    ) { // a tag 로 시작하고 제대로 닫히지 않음
+                        tString +=
+                            if (tString.endsWith("<")) "/a>"
+                            else if (tString.endsWith("</")) "a>"
+                            else if (tString.endsWith("</a")) ">"
+                            else "</a>"
+                    }
+                    println("4) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
                     animationStyleStringList.add(tString)
                 }
             }
