@@ -2,14 +2,32 @@ package sample01_kotlin.demo010_string.ex005_string_a_tag_parser
 
 import java.util.regex.Pattern
 
+
 object AnimationStyleStringMaker {
 
-    fun getCharsCount(text: String): Int {
-        val pattern = Pattern.compile("<[^>]*>") // HTML 태그를 제거하기 위한 정규식 패턴
+    private const val aTagStyleHeader = "<a style="
+    private val invalidSet = setOf("<", "<a", "<a ", "<a s", "<a s", "<a st", "<a sty", "<a styl", "<a style", "<a style=")
+
+    private fun getCharsCount(text: String): Int {
+        val pattern = Pattern.compile("<[^>]*>") // HTML 태그 제거 위한 정규식 패턴
         val matcher = pattern.matcher(text) // Matcher 객체 생성
-        val cleanedText = matcher.replaceAll("") // Matcher를 사용하여 HTML 태그를 제거
-        return cleanedText.length // 제거된 텍스트의 글자 수 계산
+        val cleanedText = matcher.replaceAll("") // Matcher 사용 하여 HTML 태그를 제거
+        return cleanedText.length // 제거된 텍스트 글자수
     }
+
+    private fun getMakeEndTag(tString: String): String {
+        return if (tString.endsWith("<")) "/a>"
+        else if (tString.endsWith("</")) "a>"
+        else if (tString.endsWith("</a")) ">"
+        else "</a>"
+    }
+
+    private var tString: String = ""
+    private var tOnlyCharsCount: Int = Int.MIN_VALUE
+    private var tLastStartIndex: Int = Int.MIN_VALUE
+    private var tLastStartEndIndex: Int = Int.MIN_VALUE
+    private var tLastEndIndex: Int = Int.MIN_VALUE
+    private var lastAStyleIndex: Int = Int.MIN_VALUE
 
     fun getStringList(
         originText: String,
@@ -18,31 +36,22 @@ object AnimationStyleStringMaker {
         isRemoveDupl: Boolean = true,
     ): List<String> {
         val onlyCharsCount = getCharsCount( originText )
+
         val changeCount = ((animationDuration / animationUnitTime).toInt()) // 100 백번의 변경을 한다는 뜻
             .let {if(it < 1) 1 else it}
         val unitCount = (onlyCharsCount / changeCount)
             .let {if (it < 1) 1 else it}
 
-        var tString: String
-        var tOnlyCharsCount: Int
-        var tLastStartIndex: Int
-        var tLastStartEndIndex: Int
-        var tLastEndIndex: Int
         val animationStyleStringList = mutableListOf<String>()
 
         for(i: Int in unitCount..originText.length step(unitCount)) {
-            tString = originText.substring(0 until i)
+            tString = originText.subSequence(0, i).toString()
 
-            if (tString == "<"
-            || tString == "<a"
-            || tString == "<a "
-            || tString == "<a s"
-            || tString == "<a st"
-            || tString == "<a sty"
-            || tString == "<a styl"
-            || tString == "<a style"
-            || tString == "<a style="
-            ) {
+            if (invalidSet.contains(tString)) {
+                continue
+            }
+            if (CharCategory.SURROGATE == tString[tString.length-1].category) { // "쭉쭉\uD83C\uDF81" > "쭉쭉\uD83C" 됬을시 마지막 char 체크해 � 문자 존재 확인
+                println("0) continue CharCategory.SURROGATE")
                 continue
             }
 
@@ -54,10 +63,10 @@ object AnimationStyleStringMaker {
             if (onlyCharsCount < tOnlyCharsCount) {
                 continue
             }
-            if (tString.contains("<a style=") && !tString.contains(">")) {
+            if (tString.contains(aTagStyleHeader) && !tString.contains(">")) {
                 continue
             }
-            if (tString.contains("<a style=") && tOnlyCharsCount == tString.length) {
+            if (tString.contains(aTagStyleHeader) && tOnlyCharsCount == tString.length) {
                 continue
             }
 
@@ -66,47 +75,46 @@ object AnimationStyleStringMaker {
             tLastEndIndex = tString.lastIndexOf("</a>")
 
             if (tLastStartIndex < 0 && tLastEndIndex < 0) {
-                println("1) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
                 animationStyleStringList.add(tString)
+
             } else if (0 < tLastEndIndex && tLastStartIndex == tLastEndIndex) {
-                println("2) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
                 animationStyleStringList.add(tString)
-            } else {
-                if (0 < tLastStartIndex
-                 && 0 < tLastStartEndIndex
-                ) { // tag 안닫힘
-                    println("3) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex" +
-                            " before\n$tString\n\n")
-                    tString +=
-                        if (tLastEndIndex < tLastStartEndIndex) {
-                            if (tString.endsWith("<")) "/a>"
-                            else if (tString.endsWith("</")) "a>"
-                            else if (tString.endsWith("</a")) ">"
-                            else "</a>"
-                        } else {// <a style=color:#2 // 이렇게 끝날수 있다.
-                            tString.substring(0, tLastStartIndex)// + "</a>"
+
+            } else if (0 < tLastStartIndex && 0 < tLastStartEndIndex) { // tag 안닫힘
+                println("1) tString before : $tString")
+
+                if (tLastEndIndex in 1 until tLastStartIndex && tLastEndIndex < tLastStartEndIndex) {
+                    lastAStyleIndex = tString.lastIndexOf(aTagStyleHeader)
+                    tString =
+                        if (lastAStyleIndex in 1 until tLastStartEndIndex && tLastEndIndex < lastAStyleIndex) {
+                            tString + getMakeEndTag(tString)
+                        } else {
+                            tString.subSequence(0, tLastStartIndex).toString()
                         }
-                    println("3) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex" +
-                            " after\n$tString\n\n")
-                    animationStyleStringList.add(tString)
                 } else {
-                    if (0 < tLastStartIndex) {
-                        tString = tString.substring(0, tLastStartIndex)
-                    }
-                    if (0 <= tLastStartIndex
-                    && 0 < tLastStartEndIndex
-//                    && tLastStartIndex < tLastStartEndIndex
-                    && 0 > tLastEndIndex
-                    ) { // a tag 로 시작하고 제대로 닫히지 않음
-                        tString +=
-                            if (tString.endsWith("<")) "/a>"
-                            else if (tString.endsWith("</")) "a>"
-                            else if (tString.endsWith("</a")) ">"
-                            else "</a>"
-                    }
-                    println("4) tLastStartIndex:$tLastStartIndex  tLastStartEndIndex:$tLastStartEndIndex tLastEndIndex:$tLastEndIndex\n$tString\n\n")
-                    animationStyleStringList.add(tString)
+                    tString =
+                        if (tLastEndIndex < tLastStartEndIndex) {
+                            tString + getMakeEndTag(tString)
+                        } else { // <a style=color:#2 // 이렇게 끝날수 있다.
+                            tString + tString.subSequence(0, tLastStartIndex).toString()// + "</a>"
+                        }
                 }
+                println("   tString  after : $tString")
+                animationStyleStringList.add(tString)
+
+            } else {
+                println("2) tString before : $tString")
+                if (0 < tLastStartIndex) {
+                    tString = tString.subSequence(0, tLastStartIndex).toString()
+                }
+                if (0 <= tLastStartIndex
+                    && 0 < tLastStartEndIndex
+                    && 0 > tLastEndIndex
+                ) { // a tag 로 시작후 제대로 닫히지 않음
+                    tString += getMakeEndTag(tString)
+                }
+                println("   tString  after : $tString")
+                animationStyleStringList.add(tString)
             }
         }
 
@@ -126,6 +134,7 @@ object AnimationStyleStringMaker {
                 }
             }
             removedDuplStringList
+
         } else {
             animationStyleStringList
         }

@@ -15,8 +15,10 @@ val sampleText03 = """
 <a style=font-weight:bold; >이제 걱정 그만!</a>    
 """.trimIndent()
 
+val sampleText04 = """이렇게 대화를 할 때마다 위 <a style=font-weight:bold;color:#ff9c00; >게이지바가 쭉쭉 올라, 🎁 선물을 받으실 수</a> 있어요!""".trimIndent()
+
 fun main() {
-    AnimationStyleStringMaker.getStringList(sampleText03).forEach {
+    AnimationStyleStringMaker.getStringList(sampleText04).forEach {
         println("--------------------------------------------------")
         println(it)
     }
