@@ -27,7 +27,7 @@ spring:
 #sample008_jpa
   jpa:
     hibernate:
-      ddl-auto: validate  # option type: create, create-drop, update, validate, none
+      ddl-auto: create-drop  # option type: create, create-drop, update, validate, none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect # Query engine setting
