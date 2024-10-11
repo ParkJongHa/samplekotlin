@@ -3,7 +3,8 @@ package sample01_kotlin.demo004_og
 import com.google.gson.Gson
 
 // inline class는 Primitive type을 기준으로 사용할 수 있고, inline class 코드 내에는 프로퍼티와 함수 정의하는 게 가능하다.
-inline class OgData(private val ogExtractorTags: Map<String, List<String>>) {
+@JvmInline
+value class OgData(private val ogExtractorTags: Map<String, List<String>>) {
 
     val title: String?
         get() = allTitleList().firstOrNull()

@@ -1,17 +1,16 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    /* default */ id("org.springframework.boot") version "3.0.1"
-    /* default */ id("io.spring.dependency-management") version "1.1.0"
-    /* default */ id("org.graalvm.buildtools.native") version "0.9.18"
-    /* default */ kotlin("jvm") version "1.8.20"
-    /* default */ kotlin("plugin.spring") version "1.7.21"
-    /* demo004_mapstruct */ kotlin("kapt") version "1.7.10"
+    /* default */ kotlin("jvm") version "1.9.25"
+    /* default */ kotlin("plugin.spring") version "2.0.21"
+    /* default */ id("org.springframework.boot") version "3.3.4"
+    /* default */ id("io.spring.dependency-management") version "1.1.6"
+    /* demo004_mapstruct */ kotlin("kapt") version "2.0.21"
 }
 
 group = "com.sample"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     /* default */ mavenCentral()
@@ -67,10 +66,9 @@ dependencies {
 
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        /* default */ freeCompilerArgs = listOf("-Xjsr305=strict")
-        /* default */ jvmTarget = "17"
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict")
     }
 }
 
