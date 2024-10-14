@@ -62,6 +62,9 @@ dependencies {
 
     /* demo004 og */implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 
+    /* demo028_swagger */implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
+
+//    /* demo029_websocket */implementation("org.springframework.boot:spring-boot-starter-websocket:3.3.4")
 }
 
 kotlin {

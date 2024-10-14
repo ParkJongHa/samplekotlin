@@ -7,8 +7,8 @@ import java.time.LocalDateTime
 /*
 default server
     kotlin
-    java 17 (LTS)
-    spring boot 3 (tomcat 10)
+    java 21 (LTS)
+    spring boot 3.3
  */
 @RestController
 class Demo001Controller {

@@ -40,3 +40,9 @@ logging:
     org:
       hibernate:
         sql: trace
+
+spring-doc:
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter: method
+#    doc-expansion: none
