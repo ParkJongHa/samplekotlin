@@ -42,6 +42,8 @@ logging:
         sql: trace
 
 spring-doc:
+  api-docs:
+    path: /api-docs
   swagger-ui:
     tags-sorter: alpha
     operations-sorter: method
