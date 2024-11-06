@@ -1,4 +1,4 @@
-package sample01_kotlin.demo_014_random
+package sample01_kotlin.demo014_random
 
 import kotlin.random.Random
 
