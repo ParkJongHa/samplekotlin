@@ -3,6 +3,7 @@ package sample01_kotlin.demo013_file.ex001_read
 import data.categoryList
 import data.countryList
 import org.jsoup.Jsoup
+import sample01_kotlin.demo013_file.ex002_write.fileWrite
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
@@ -53,26 +54,26 @@ fun combination() {
 }
 
 fun getDomainSet() {
-    val domainSet = mutableSetOf<String>()
 
     countryList.forEach { aCountry ->
         categoryList.filter { it != "adult" }.forEach { aCategory ->
-            val start = System.currentTimeMillis()
             println("$aCountry $aCategory start")
 
+            val domainSet = mutableSetOf<String>()
+            val start = System.currentTimeMillis()
+
             urlExtract(aCountry, aCategory, domainSet)
+            fileWrite(domainSet.toList())
 
             println("$aCountry $aCategory delay (${System.currentTimeMillis() - start}ms)")
-            Thread.sleep(1000L + Random.nextLong(1000))
+            Thread.sleep(1500L + Random.nextLong(1500))
         }
     }
-
-    domainSet.forEach { println(it) }
 }
 
 fun urlExtract(countryCode: String, category: String, domainSet: MutableSet<String>) {
     try {
-        val document = Jsoup.connect("$countryCode/$category").get()
+        val document = Jsoup.connect("https://ko.semrush.com/trending-websites/$countryCode/$category").get()
 
         val section = document.childNodes()[4]
             .childNodes()[3]

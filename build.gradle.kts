@@ -1,9 +1,9 @@
 plugins {
-    /* default */ kotlin("jvm") version "1.9.25"
-    /* default */ kotlin("plugin.spring") version "2.0.21"
+    /* default */ kotlin("jvm") version "2.1.0"
+    /* default */ kotlin("plugin.spring") version "2.1.0"
     /* default */ id("org.springframework.boot") version "3.3.4"
     /* default */ id("io.spring.dependency-management") version "1.1.6"
-    /* demo004_mapstruct */ kotlin("kapt") version "2.0.21"
+    /* demo004_mapstruct */ kotlin("kapt") version "2.1.0"
 }
 
 group = "com.sample"
@@ -13,14 +13,17 @@ java.sourceCompatibility = JavaVersion.VERSION_21
 repositories {
     /* default */ mavenCentral()
 }
-
+kapt {
+    correctErrorTypes = true
+}
 dependencies {
-    /* default */ implementation("org.springframework.boot:spring-boot-starter-web:3.3.2")
-    /* default */ implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.1")
+    /* default */ implementation("org.springframework.boot:spring-boot-starter-web:3.4.0")
+    /* default */ implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.1")
     /* default */ implementation("org.jetbrains.kotlin:kotlin-reflect")
     /* default */ implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    /* default */ developmentOnly("org.springframework.boot:spring-boot-devtools:3.3.2")
-    /* default */ testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.1")
+    /* default */ developmentOnly("org.springframework.boot:spring-boot-devtools:3.4.0")
+    /* default */ testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("jakarta.validation:jakarta.validation-api:3.1.0")
 
     /* demo003_gson */ implementation("com.google.code.gson:gson:2.10.1")
 
