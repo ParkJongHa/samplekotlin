@@ -1,6 +1,6 @@
 package data
 
-class UserVo (
+data class UserVo (
 
     var id: Long? = null,
 
