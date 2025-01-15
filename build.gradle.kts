@@ -49,6 +49,11 @@ dependencies {
 
     /* demo022_jpa */ implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.2")
 
+    /* demo024_mybatis */implementation("org.mybatis:mybatis:3.5.19")
+    /* demo024_mybatis */implementation("org.mybatis:mybatis-spring:3.0.4")
+    /* demo024_mybatis */implementation("org.springframework:spring-jdbc:6.2.1")
+
+
 //    /* demo026_slf4j */ implementation("org.springframework.boot:spring-boot-starter-log4j2")
 //    /* demo026_slf4j */ implementation("org.project-lombok:lombok:1.18.22")
 //    compileOnly("org.project-lombok:lombok")
