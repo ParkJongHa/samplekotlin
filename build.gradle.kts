@@ -17,7 +17,7 @@ kapt {
     correctErrorTypes = true
 }
 dependencies {
-    /* default */ implementation("org.springframework.boot:spring-boot-starter-web:3.4.0")
+    /* default */ implementation("org.springframework.boot:spring-boot-starter-web:3.4.1")
     /* default */ implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.1")
     /* default */ implementation("org.jetbrains.kotlin:kotlin-reflect")
     /* default */ implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
