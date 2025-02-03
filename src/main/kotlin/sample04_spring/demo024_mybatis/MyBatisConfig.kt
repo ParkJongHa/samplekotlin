@@ -7,6 +7,7 @@ import org.mybatis.spring.annotation.MapperScan
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.jdbc.datasource.DataSourceTransactionManager
 import javax.sql.DataSource
 
 
@@ -25,6 +26,11 @@ class MyBatisConfig {
         sqlSessionFactoryBean.setDataSource(dataSource)
 
         return sqlSessionFactoryBean.getObject()!!
+    }
+
+    @Bean
+    fun transactionManager(dataSource: DataSource): DataSourceTransactionManager {
+        return DataSourceTransactionManager(dataSource)
     }
 
 }

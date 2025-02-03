@@ -3,25 +3,29 @@ package sample04_spring.demo024_mybatis
 import data.UserVo
 import data.UserGroupByVo
 import org.apache.ibatis.annotations.*
-import org.hibernate.sql.ast.tree.insert.InsertStatement
 
 @Mapper
 interface Demo024UserMapper {
 
     @Select("""
-        SELECT * FROM member
+        select * from member
     """)
     fun selectUserList(): List<UserVo>
 
+    @Select("""
+        select max(id) from member
+    """)
+    fun selectMaxId(): Long
+
     @Insert("""
-        INSERT INTO member (id, name, age) 
-        VALUES (#{id}, #{name}, #{age})
+        insert into member (id, name, age) 
+        values (#{id}, #{name}, #{age})
     """)
     fun insertUser(user: UserVo)
 
     @Insert("""<script>
-        INSERT INTO member (id, name, age) 
-        VALUES 
+        insert into member (id, name, age) 
+        values 
         <foreach collection='list' item='item' separator=','>
         (#{item.id}, #{item.name}, #{item.age})
         </foreach>
@@ -37,7 +41,7 @@ interface Demo024UserMapper {
 class UserSqlProvider {
 
     fun userGroupBy(groupByTarget: String): String {
-        var sql = "SELECT $groupByTarget, count(*) as cnt FROM member"
+        var sql = "select $groupByTarget, count(*) as cnt from member"
 
         when (groupByTarget) {
             "name" -> sql += " group by name "

@@ -29,4 +29,12 @@ class Demo024UserController(
         return demo024UserService.insertUserList()
     }
 
+    @GetMapping("/api/demo024/user/transactional/{isTransaction}/{isError}")
+    fun getUserTransactional(
+        @PathVariable isTransaction: Boolean,
+        @PathVariable isError: Boolean,
+    ) {
+        return demo024UserService.insertUser(isTransaction, isError)
+    }
+
 }
