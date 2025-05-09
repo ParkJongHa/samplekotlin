@@ -17,7 +17,7 @@ val sampleText03 = """
 
 val sampleText04 = """이렇게 대화를 할 때마다 위 <a style=font-weight:bold;color:#ff9c00; >게이지바가 쭉쭉 올라, <br/>🎁 선물을 받으실 수</a> 있어요!""".trimIndent()
 
-fun main() {
+fun main1() {
     AnimationStyleStringMaker
         .getStringList(sampleText04.replace("<br/>", "\n").replace("<br>","\n")).forEach {
             println("--------------------------------------------------")

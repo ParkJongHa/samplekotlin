@@ -1,6 +1,6 @@
 package sample01_kotlin.demo001_dft.ex007_list_chunk
 
-fun main() {
+fun main1() {
     val sampleList = listOf(
         "a",
         "b",

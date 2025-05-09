@@ -16,6 +16,6 @@ fun removeLastSharp(string: String): String {
     return temp
 }
 
-fun main() {
+fun main1() {
     println( removeLastSharp(sample) )
 }

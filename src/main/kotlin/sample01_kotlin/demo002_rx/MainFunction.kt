@@ -33,7 +33,7 @@ fun sample(): Flow<Int> = flow {
     }
 }.sample(2000)
 
-fun main() = runBlocking<Unit> {
+fun main1() = runBlocking<Unit> {
     sample().collect { println(it.toString()) }
 }
 

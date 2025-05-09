@@ -3,7 +3,7 @@ package sample01_kotlin.demo011_db.ex001_db_connection
 import java.sql.Connection
 import java.sql.DriverManager
 
-fun main() {
+fun main1() {
     val jdbcUrl = "jdbc:postgresql://localhost:5432/ltlk"
     val username = "123"
     val password = "456"

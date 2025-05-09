@@ -1,6 +1,6 @@
 package sample01_kotlin.demo010_string.ex001_string_length
 
-fun main() {
+fun main1() {
     var str: String = "abc"
     println( "$str length = ${str.length}" )
 

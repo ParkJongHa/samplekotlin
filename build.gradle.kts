@@ -65,6 +65,11 @@ dependencies {
 //    }
 
 //    /* demo029_websocket */implementation("org.springframework.boot:spring-boot-starter-websocket:3.3.4")
+
+    implementation("net.coobird:thumbnailator:0.4.20")// sample01_kotlin.demo16_image_compress // implementation("id.zelory:compressor:3.0.1")
+//    implementation("com.twelvemonkeys.imageio:imageio-core:3.8.2")// sample01_kotlin.demo16_image_compress
+//    implementation("com.twelvemonkeys.imageio:imageio-png:3.8.2")// sample01_kotlin.demo16_image_compress
+
 }
 
 kotlin {

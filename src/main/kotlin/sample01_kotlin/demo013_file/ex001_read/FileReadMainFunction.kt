@@ -9,7 +9,7 @@ import java.io.File
 import java.io.FileReader
 import kotlin.random.Random
 
-fun main() {
+fun main1() {
 //    domainExtract()
 //    combination()
     getDomainSet()

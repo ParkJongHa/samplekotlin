@@ -2,7 +2,7 @@ package sample01_kotlin.demo013_file.ex002_write
 
 import java.io.File
 
-fun main() {
+fun main1() {
 //    fileWrite()
 }
 
